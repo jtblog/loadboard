@@ -10,6 +10,9 @@ header#top-content {
   position: relative;
   width: 100%;
   background-color: rgb(57, 57, 206);
+  color: white;
+  min-height: 150px;
+  /*
   box-shadow:
       0 4px 5px 0 rgba(0, 0, 0, 0.14),
       0 2px 9px 1px rgba(0, 0, 0, 0.12),
@@ -22,6 +25,12 @@ header#top-content {
   width: 100%;
   will-change: transform;
   z-index: 1000;
-  color: white;
-  min-height: 150px;
+  */
+}
+
+div#home-title {
+    margin: 45px auto -15px auto;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 60px;
 }
