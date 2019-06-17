@@ -35,6 +35,7 @@ window.prepare_firebase = function(){
   window.quotes_ref = database.ref('/quotes/');
 
   window.auth.onAuthStateChanged(authstateobserver);
+  document.getElementById('firebaseui-auth-container').innerHTML = "";
   window.ui.start('#firebaseui-auth-container', window.uiConfig);
 }
 

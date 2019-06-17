@@ -6,12 +6,11 @@
   <link type="text/css" rel="stylesheet" href="styles/firebaseui.css">
   
   <!-- Bootstrap -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css">
-
-<!-- Firechat -->
-<link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css">
-
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css">
+  <!-- Loadboard 
+  <link rel="stylesheet" href="https://cdn.firebase.com/libs/Loadboard/3.0.1/Loadboard.min.css">
+-->
 <title>LOADBOARD</title>
 <script type="text/javascript" src="scripts/firebase-app.js"></script><script type="text/javascript" src="scripts/firebase-auth.js"></script><script type="text/javascript" src="scripts/firebase-database.js"></script><script type="text/javascript" src="scripts/firebase-firestore.js"></script><script type="text/javascript" src="scripts/firebase-messaging.js"></script><script type="text/javascript" src="scripts/firebase-storage.js"></script><script type="text/javascript" src="scripts/firebaseui.js"></script><script type="text/javascript" src="scripts/firebase-app.js"></script><script type="text/javascript" src="scripts/firebase-auth.js"></script><script type="text/javascript" src="scripts/firebase-database.js"></script><script type="text/javascript" src="scripts/firebase-firestore.js"></script><script type="text/javascript" src="scripts/firebase-messaging.js"></script><script type="text/javascript" src="scripts/firebase-storage.js"></script><script type="text/javascript" src="scripts/firebaseui.js"></script></head>
 <body>
@@ -38,540 +37,9 @@
         </div>
         <div class="row">
           <div class="span6 offset3">
-            <div id="firechat-container" class="clearfix"><div id="firechat" class="full">
-<div id="firechat-header" class="clearfix">
-<div class="clearfix"><div class="half firechat-dropdown" style="">
-<a id="firechat-btn-rooms" class="firechat-dropdown-toggle btn full" data-toggle="firechat-dropdown" href="#">
-<span class="icon user-chat"></span>
-Chat Rooms
-<span class="caret"></span>
-</a>
-<div class="firechat-dropdown-menu full" role="menu"><ul id="firechat-room-list"></ul><div class="firechat-dropdown-footer aligncenter">
-<button type="button" class="btn twothird center" id="firechat-btn-create-room-prompt">Create Room</button>
-</div></div></div>
-<div class="half firechat-dropdown" style="">
-<a data-event="firechat-user-search-btn" class="btn full firechat-dropdown-toggle" data-toggle="firechat-dropdown" href="#">
-<span class="icon user-group"></span>
-Visitors
-<span class="caret"></span>
-</a>
-<div class="firechat-dropdown-menu" role="menu">
-<div class="firechat-dropdown-header aligncenter clearfix">
-<div class="search-wrapper">
-<span class="icon search"></span>
-<input type="text" data-event="firechat-user-search" data-template="templates/user-search-list-item.html" data-target="firechat-user-search" data-controls="firechat-user-search-controls" class="center fivesixth">
-</div>
-</div>
-<ul id="firechat-user-search"></ul><div class="firechat-dropdown-footer aligncenter clearfix">
-<div id="firechat-user-search-controls" class="clearfix">
-<span class="quarter"></span>
-<button type="button" class="btn half" data-event="firechat-user-search" data-toggle="firechat-pagination-next" data-template="templates/user-search-list-item.html" data-target="firechat-user-search" data-controls="firechat-user-search-controls" disabled="disabled">Next</button>
-</div><label class="center full">
-<small>Use "+ Invite" button within chat rooms for regular invites.</small>
-</label>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="firechat-tabs" class="clearfix">
-<ul id="firechat-tab-list" class="nav nav-tabs clearfix"><li data-room-id="-Iy1N3xs4kN8iALHV0QA" class="active" style="width: 325px;">
-<a href="#-Iy1N3xs4kN8iALHV0QA" data-toggle="firechat-tab" title="Chat">Chat</a>
-</li></ul>
-<div id="firechat-tab-content" class="tab-content"><div id="-Iy1N3xs4kN8iALHV0QA" data-room-id="-Iy1N3xs4kN8iALHV0QA" class="tab-pane active">
-<div class="tab-pane-menu clearfix"><div class="firechat-dropdown twofifth">
-<a data-event="firechat-user-room-list-btn" class="full btn firechat-dropdown-toggle" data-toggle="firechat-dropdown" href="#" data-target="firechat-room-user-list--Iy1N3xs4kN8iALHV0QA">
-<span class="icon user-group"></span>
-In Room
-<span class="caret"></span>
-</a>
-<div class="firechat-dropdown-menu" role="menu">
-<ul id="firechat-room-user-list--Iy1N3xs4kN8iALHV0QA" class="full"></ul>
-</div>
-</div><div class="firechat-dropdown twofifth">
-<a data-event="firechat-user-search-btn" class="full btn firechat-dropdown-toggle" data-toggle="firechat-dropdown" href="#">
-<span class="icon plus">+</span>
-Invite
-<span class="caret"></span>
-</a><div class="firechat-dropdown-menu" role="menu">
-<div class="firechat-dropdown-header aligncenter clearfix">
-<div class="search-wrapper">
-<span class="icon search"></span>
-<input type="text" data-event="firechat-user-search" data-template="templates/room-user-search-list-item.html" data-target="firechat-room-user-search--Iy1N3xs4kN8iALHV0QA" data-controls="firechat-room-user-search-controls--Iy1N3xs4kN8iALHV0QA" class="center fivesixth">
-</div>
-</div>
-<ul id="firechat-room-user-search--Iy1N3xs4kN8iALHV0QA"></ul><div class="firechat-dropdown-footer aligncenter clearfix">
-<div id="firechat-room-user-search-controls--Iy1N3xs4kN8iALHV0QA" class="clearfix"><span class="quarter"></span>
-<!--
-<button type='button' class='btn third disabled' data-event='firechat-user-search' data-template='templates/room-user-search-list-item.html' data-target='firechat-room-user-search--Iy1N3xs4kN8iALHV0QA' data-controls='firechat-room-user-search-controls--Iy1N3xs4kN8iALHV0QA' data-toggle='firechat-pagination-prev' disabled=disabled>Prev</button>
--->
-<button type="button" class="btn half disabled" data-event="firechat-user-search" data-template="templates/room-user-search-list-item.html" data-target="firechat-room-user-search--Iy1N3xs4kN8iALHV0QA" data-controls="firechat-room-user-search-controls--Iy1N3xs4kN8iALHV0QA" data-toggle="firechat-pagination-next" disabled="disabled">Next</button>
-</div>
-</div>
-</div>
-</div><a href="#!" data-event="firechat-close-tab" class="icon close right" style="15px 5px" title="Leave Room"></a></div><div class="clearfix">
-<div id="firechat-messages-Iy1N3xs4kN8iALHV0QA" class="chat"><div class="message message-default " data-message-id="-LghmZFxrH7tg1_8q0-q" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:15pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-f
-</div>
-</div><div class="message message-default " data-message-id="-LghmZHhAnUj-C4Z5I-i" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:15pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-s
-</div>
-</div><div class="message message-default " data-message-id="-LghmZJSqNV9XWuue4ds" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:15pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-fdf
-</div>
-</div><div class="message message-default " data-message-id="-LghmZZK2Trwk-yUzR3Y" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-ascsacv
-</div>
-</div><div class="message message-default " data-message-id="-LghmZcp8mqDym_CCuGU" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-av
-</div>
-</div><div class="message message-default " data-message-id="-LghmZexPiPTd_lWq93I" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-dv
-</div>
-</div><div class="message message-default " data-message-id="-LghmZhKZvUoTEWbCXpq" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-sdv
-</div>
-</div><div class="message message-default " data-message-id="-LghmZj4tXkmc1Tp31BD" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-sdv
-</div>
-</div><div class="message message-default " data-message-id="-LghmZlKlKV1LeLOxRcn" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-d
-</div>
-</div><div class="message message-default " data-message-id="-LghmZnSuuRVp1F4GBoM" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-s
-</div>
-</div><div class="message message-default " data-message-id="-LghmZrCdli_ppWgX8Oe" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-vds
-</div>
-</div><div class="message message-default " data-message-id="-LghmZtCqUfh6vdjR9YN" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-v
-</div>
-</div><div class="message message-default " data-message-id="-LghmZvCPZj2-EAkG0WO" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-sd
-</div>
-</div><div class="message message-default " data-message-id="-LghmZxSMRJ9HeF_SFvo" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-vds
-</div>
-</div><div class="message message-default " data-message-id="-LghmZzCQQdtzyFFt_Tm" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-v
-</div>
-</div><div class="message message-default " data-message-id="-Lghm_04TmfqjmQO49Vd" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-sdv
-</div>
-</div><div class="message message-default " data-message-id="-Lghm_241FXbEIH_h9EZ" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-ds
-</div>
-</div><div class="message message-default " data-message-id="-Lghm_4C_bZiFFpSDEze" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-v
-</div>
-</div><div class="message message-default " data-message-id="-Lghm_64xkCrQsj6XYn1" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-d
-</div>
-</div><div class="message message-default " data-message-id="-Lghm_8xDWD4RsC1KDqP" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-vds
-</div>
-</div><div class="message message-default " data-message-id="-Lghm_B_FA89qtQaAU7G" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-c
-</div>
-</div><div class="message message-default " data-message-id="-Lghm_D_zu0kv2f9_vuh" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-ds
-</div>
-</div><div class="message message-default " data-message-id="-Lghm_FKxtVIg7tCCmEW" data-user-id="KESceaZZHyRLVT8TIQT8muhXjEK2" data-user-name="AnonymousRLVT8TIQ" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRLVT8TIQ">AnonymousRLVT8TIQ</strong>
-<em>(6:16pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-v
-</div>
-</div><div class="message message-default " data-message-id="-Lgn2mjdLdEfJrp_IoSP" data-user-id="XQohPGVFpGYicwFpi4mNmlWcnYS2" data-user-name="LagRecoil" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="LagRecoil">LagRecoil</strong>
-<em>(6:49pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-Heylo
-</div>
-</div><div class="message message-default " data-message-id="-LgpGbxjSjmOYli9lrzd" data-user-id="IACUr95AnHeRaf5tnravRwoeb1o2" data-user-name="❀KimOanh❀" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="❀KimOanh❀">❀KimOanh❀</strong>
-<em>(5:09am)</em>:
-</label></div>
-<div class="clearfix message-content">
-Xin chào
-</div>
-</div><div class="message message-default " data-message-id="-LgpUfJnkGi2X4yZKFZC" data-user-id="y09wnZLZguROOU0doyNMxoSmVJU2" data-user-name="AnonymousROOU0doy" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousROOU0doy">AnonymousROOU0doy</strong>
-<em>(6:10am)</em>:
-</label></div>
-<div class="clearfix message-content">
-aaaa
-</div>
-</div><div class="message message-default " data-message-id="-LgrK-mp7nLOxKie9bny" data-user-id="ZmGCBXJrhMfLxZ8aK3xZRxqAMVq2" data-user-name="AnonymousfLxZ8aK3" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousfLxZ8aK3">AnonymousfLxZ8aK3</strong>
-<em>(2:43pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-hh
-</div>
-</div><div class="message message-default " data-message-id="-LgrZTvjNTWdBaGU7M1A" data-user-id="KVZ2wflUVJYQNd1QYYgKpyEqTgf2" data-user-name="blizma" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="blizma">blizma</strong>
-<em>(3:50pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-a
-</div>
-</div><div class="message message-default " data-message-id="-LgzZLm9HWxofSOh6tPN" data-user-id="pAnrikk2BpNRR0OazcMtg8zVhmm2" data-user-name="AnonymousNRR0Oazc" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousNRR0Oazc">AnonymousNRR0Oazc</strong>
-<em>(5:07am)</em>:
-</label></div>
-<div class="clearfix message-content">
-hello
-</div>
-</div><div class="message message-default " data-message-id="-LgzZP-2e_Ktz4eFaxAv" data-user-id="pAnrikk2BpNRR0OazcMtg8zVhmm2" data-user-name="AnonymousNRR0Oazc" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousNRR0Oazc">AnonymousNRR0Oazc</strong>
-<em>(5:07am)</em>:
-</label></div>
-<div class="clearfix message-content">
-<a target="_blank" href="https://www.youtube.com/">https://www.youtube.com/</a>
-</div>
-</div><div class="message message-default " data-message-id="-Lh-vPjELc67RYSR3pcH" data-user-id="7nYHxpi8DWepCUgcYyGnflrXZvF2" data-user-name="K Sri Ravi Teja" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="K Sri Ravi Teja">K Sri Ravi Teja</strong>
-<em>(11:27am)</em>:
-</label></div>
-<div class="clearfix message-content">
-hii
-</div>
-</div><div class="message message-default " data-message-id="-Lh146-ZGhgmBSFcDLCO" data-user-id="bnyT03KnIUQ2fJLDsj0cb0x5QpR2" data-user-name="AnonymousQ2fJLDsj" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousQ2fJLDsj">AnonymousQ2fJLDsj</strong>
-<em>(4:49pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-hi
-</div>
-</div><div class="message message-default " data-message-id="-Lh2kOXgFjo3dnOVYqGr" data-user-id="KVZ2wflUVJYQNd1QYYgKpyEqTgf2" data-user-name="blizma" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="blizma">blizma</strong>
-<em>(12:38am)</em>:
-</label></div>
-<div class="clearfix message-content">
-kj
-</div>
-</div><div class="message message-default " data-message-id="-Lh3StNYOwOG_GHLJlkh" data-user-id="p3AxvsydDKev1TAhBmMzwzQMvtx1" data-user-name="Phạm Đức Quang" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="Phạm Đức Quang">Phạm Đức Quang</strong>
-<em>(3:56am)</em>:
-</label></div>
-<div class="clearfix message-content">
-Halo
-</div>
-</div><div class="message message-default " data-message-id="-Lh3pCehZ-JzJgWms0N2" data-user-id="pgx4YUvmatb9DX8gu04W4v2lMRw1" data-user-name="Anonymousb9DX8gu0" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="Anonymousb9DX8gu0">Anonymousb9DX8gu0</strong>
-<em>(5:38am)</em>:
-</label></div>
-<div class="clearfix message-content">
-Gggggg
-</div>
-</div><div class="message message-default " data-message-id="-Lh5NS9T4TSuVIxcZfCK" data-user-id="s9NAl177YmhBq4mJyLRf7RhK9AI3" data-user-name="Anup Dhabarde" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="Anup Dhabarde">Anup Dhabarde</strong>
-<em>(12:52pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-Hi
-</div>
-</div><div class="message message-default " data-message-id="-Lh5VKXb0rkfZdGqOu5g" data-user-id="FJWzN9yu3bRnCOgKWikyv2drhTx1" data-user-name="AnonymousRnCOgKWi" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRnCOgKWi">AnonymousRnCOgKWi</strong>
-<em>(1:26pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-Cghhhhh
-</div>
-</div><div class="message message-default " data-message-id="-LhEByB0qGIAmC5LudV_" data-user-id="YyAbMGSn92Ql4A92xYK03ZkgLec2" data-user-name="Ilham Sanusi" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="Ilham Sanusi">Ilham Sanusi</strong>
-<em>(5:58am)</em>:
-</label></div>
-<div class="clearfix message-content">
-Hallo
-</div>
-</div><div class="message message-default " data-message-id="-LhGILhGnJWCj5AuYacX" data-user-id="bC8dJLhPaGQvsRdOqkW3sLEZnhi1" data-user-name="Brian Inoa" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="Brian Inoa">Brian Inoa</strong>
-<em>(3:45pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-Testy
-</div>
-</div><div class="message message-default " data-message-id="-LhGIN0DIejNQ8CxV8JF" data-user-id="bC8dJLhPaGQvsRdOqkW3sLEZnhi1" data-user-name="Brian Inoa" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="Brian Inoa">Brian Inoa</strong>
-<em>(3:46pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-test
-</div>
-</div><div class="message message-default " data-message-id="-LhKwa-hRarM0-nIkMxe" data-user-id="7IFS4QP5uRfq4BGTPM0N6D4Jx0B3" data-user-name="Yury Tatsenka" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="Yury Tatsenka">Yury Tatsenka</strong>
-<em>(1:24pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-nice
-</div>
-</div><div class="message message-default " data-message-id="-LhMskRkRpXW-QsDNA1g" data-user-id="zWlyVDCtT7bTYUt7p4POvfsKmZW2" data-user-name="AnonymousbTYUt7p4" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousbTYUt7p4">AnonymousbTYUt7p4</strong>
-<em>(10:27pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-does this even work?
-</div>
-</div><div class="message message-default " data-message-id="-LhORDlCFqdlKx1vfh_B" data-user-id="oSTqurPjGcSHDV5ZlH796bCM9cj1" data-user-name="Graphilia DF" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="Graphilia DF">Graphilia DF</strong>
-<em>(5:41am)</em>:
-</label></div>
-<div class="clearfix message-content">
-hey
-</div>
-</div><div class="message message-default " data-message-id="-LhPmm8tCitqKhU17m-j" data-user-id="xSY87XxfNxe3Dztcppf5My6j1js1" data-user-name="Hidayat" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="Hidayat">Hidayat</strong>
-<em>(11:59am)</em>:
-</label></div>
-<div class="clearfix message-content">
-Hello
-</div>
-</div><div class="message message-default " data-message-id="-LhRZdiY27zujhh7Bxhy" data-user-id="c7JwGkQB8gfoCYsOoIBcZtJyGwN2" data-user-name="AnonymousfoCYsOoI" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousfoCYsOoI">AnonymousfoCYsOoI</strong>
-<em>(8:17pm)</em>:
-</label></div>
-<div class="clearfix message-content">
-hey
-</div>
-</div><div class="message message-default " data-message-id="-LhSo-M1s_cAYC5LGmHH" data-user-id="XmKdGyEvy1clz3VZ0hAJVkVwbgq2" data-user-name="Anonymousclz3VZ0h" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="Anonymousclz3VZ0h">Anonymousclz3VZ0h</strong>
-<em>(2:04am)</em>:
-</label></div>
-<div class="clearfix message-content">
-UUHSABG\
-</div>
-</div><div class="message message-default " data-message-id="-LhUVnU3X7TmzFfRK8M9" data-user-id="581J9WKQ9jRYmSqepj9S66GBvef2" data-user-name="AnonymousRYmSqepj" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="AnonymousRYmSqepj">AnonymousRYmSqepj</strong>
-<em>(9:59am)</em>:
-</label></div>
-<div class="clearfix message-content">
-hello
-</div>
-</div><div class="message message-default " data-message-id="-LhYe9_JoKZ4IoKYZxRq" data-user-id="4IIGYIyxFAaFSWA8cz42hFqQusg1" data-user-name="เน่วหล่อโฮกกกกกปิ๊ป!!" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="เน่วหล่อโฮกกกกกปิ๊ป!!">เน่วหล่อโฮกกกกกปิ๊ป!!</strong>
-<em>(5:18am)</em>:
-</label></div>
-<div class="clearfix message-content">
-hi
-</div>
-</div><div class="message message-default " data-message-id="-LhZUfyzkELTC5XoYMQ1" data-user-id="4s0SgZlI2xfPtNJtB4UjhTe2l4j1" data-user-name="triforce" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="triforce">triforce</strong>
-<em>(9:12am)</em>:
-</label></div>
-<div class="clearfix message-content">
-Hello
-</div>
-</div><div class="message message-default " data-message-id="-LhZUgjLdvxEBpoQoY49" data-user-id="4s0SgZlI2xfPtNJtB4UjhTe2l4j1" data-user-name="triforce" data-class="firechat-message">
-<div class="clearfix">
-<label class="fourfifth">
-<strong class="name" title="triforce">triforce</strong>
-<em>(9:12am)</em>:
-</label></div>
-<div class="clearfix message-content">
-Hi
-</div>
-</div></div>
-</div><div class="clearfix">
-<label>Your message:</label>
-<textarea id="textarea-Iy1N3xs4kN8iALHV0QA" placeholder="Type your message here..."></textarea>
-</div>
-</div></div>
-</div><div id="firechat-footer" class="clearfix"></div>
-</div></div>
-            <div id="user-info" style="display: none;">
-              Logged in as <span id="user-name">.</span>
-              <a href="javascript:logout();">Logout</a>
-            </div>
+              <div id="firebaseui-auth-container" class="clearfix">
+
+              </div>
           </div>
         </div>
     </div>
@@ -582,19 +50,18 @@ Hi
     
     <div class="row">
       <div class="span12">
-          <div class="bottom-title">Real-time chat with no server code.</div>
           <div class="bottom-content">
             <div class="row">
               <div class="span5 offset1">
-                <h3>What is Firechat?</h3>
+                <h3>What is Loadboard?</h3>
                 <p class="answer">
-                  Firechat is an open-source, real-time chat widget built on Firebase. It offers fully secure multi-user, multi-room chat with flexible authentication, moderator features, user presence and search, private messaging, chat invitations, and more.
+                  Loadboard is an open-source, real-time logistic web app built on Firebase. It offers fully secure multi-user usage with flexible authentication, moderator features, user presence and search, private messaging and more.
                 </p>
               </div>
               <div class="span5">
-                <h3>Which technologies does Firechat use?</h3>
+                <h3>Which technologies does Loadboard use?</h3>
                 <p class="answer">
-                  The core data layer under Firechat uses <a href="https://firebase.google.com/?g=firechat" target="_blank">Firebase</a> for authentication, real-time data synchronization, and data persistence.
+                  The core data layer under Loadboard uses <a href="https://firebase.google.com/" target="_blank">Firebase</a> for authentication, real-time data synchronization, and data persistence.
                   <br><br>
                   The default interface uses <a href="http://jquery.com/" target="_blank">jQuery</a>, <a href="http://underscorejs.org/" target="_blank">Underscore.js</a>, and <a href="http://twitter.github.io/bootstrap/" target="_blank">Bootstrap</a>. Icons by <a href="http://glyphicons.com/" target="_blank">Glyphicons</a>. Build and compilation managed with <a href="http://gruntjs.com/" target="_blank">Grunt</a> and code hosted by <a href="https://github.com/" target="_blank">GitHub</a>.
                 </p>
@@ -602,39 +69,34 @@ Hi
             </div>
             <div class="row">
               <div class="span5 offset1">
-                <h3>What can I do with Firechat?</h3>
+                <h3>What can I do with Loadboard?</h3>
                 <p class="answer">
-                  With Firechat, you get full-featured chat in your application with a few simple script includes. Additionally, Firechat is easy to modify and extend. Based upon it's simple underlying data model and <a href="https://firebase.google.com/?g=firechat" target="_blank">Firebase</a>-powered data synchronization, it's easy to add new features, modify the UI, and customize to fit your specific needs.
+                  With Loadboard, you get full-featured logistics in your application with a few simple script includes. Additionally, Loadboard is easy to modify and extend. Based upon it's simple underlying data model and <a href="" target="_blank">Firebase</a>-powered data synchronization, it's easy to add new features, modify the UI, and customize to fit your specific needs.
                 </p>
                 <p>
-                  If Firechat doesn't currently meet your needs, feel free to fork the repo and tweak the code!
+                  If Loadboard doesn't currently meet your needs, feel free to fork the repo and tweak the code!
                 </p>
               </div>
               <div class="span5">
-                <h3>Who's behind Firechat?</h3>
+                <h3>Who's behind Loadboard?</h3>
                 <p class="answer">
-                  Firechat was built by the folks at <a href="https://firebase.google.com/?g=firechat" target="_blank">Firebase</a> in San Francisco, California.
+                  <!--
+                    Loadboard was built by the folks at <a href="https://firebase.google.com/?g=Loadboard" target="_blank">Firebase</a> in San Francisco, California.
                   <br><br>
-                  Community submissions are encouraged! <a href="https://github.com/firebase/firechat" target="_blank">Star Firechat on GitHub</a> and send a pull request when you're ready to contribute!
+                  Community submissions are encouraged! <a href="https://github.com/firebase/Loadboard" target="_blank">Star Loadboard on GitHub</a> and send a pull request when you're ready to contribute!
+                  -->
                 </p>
               </div>
             </div>
             <div class="row">
               <div class="span5 offset1">
-                <h3>Who's using Firechat?</h3>
+                <h3>Who's using Loadboard?</h3>
                 <p class="answer">
                   </p><blockquote>
-                    <img src="images/customer-cbs.png">
-                    <small>CBS <i>Big Brother</i> Live Feeds</small>
                   </blockquote>
                 <p></p>
               </div>
-              <div class="span5 ">
-                <h3>How is Firechat Licensed?</h3>
-                <p class="answer">
-                  Firechat is published under the <a href="https://firebase.mit-license.org/" target="_blank">MIT license</a>.
-                </p>
-              </div>
+              
             </div>
           </div>
         </div>
