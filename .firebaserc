@@ -1,0 +1,20 @@
+{
+  "targets": {
+    "loadboard-bda89": {
+      "hosting": {
+        "loadboard-bda89": [
+          "loadboard-bda89"
+        ],
+        "loadbuddy": [
+          "loadbuddy"
+        ],
+        "target-name": [
+          "site-name"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "production": "loadboard-bda89"
+  }
+}
