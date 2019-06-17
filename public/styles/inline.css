@@ -12,7 +12,7 @@ header#top-content {
   background-color: rgb(57, 57, 206);
   color: white;
   min-height: 150px;
-  /*
+  
   box-shadow:
       0 4px 5px 0 rgba(0, 0, 0, 0.14),
       0 2px 9px 1px rgba(0, 0, 0, 0.12),
@@ -25,7 +25,20 @@ header#top-content {
   width: 100%;
   will-change: transform;
   z-index: 1000;
-  */
+  
+}
+
+.header-links a.selected {
+    text-decoration: underline;
+    color: #feffff;
+    cursor: default;
+}
+
+.header-links a {
+    display: inline-block;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
 }
 
 div#home-title {
@@ -33,4 +46,9 @@ div#home-title {
     font-size: 50px;
     text-align: center;
     margin-bottom: 60px;
+}
+
+a:hover, a:focus {
+    color: white;
+    text-decoration: underline;
 }
