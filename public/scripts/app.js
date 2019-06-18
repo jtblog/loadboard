@@ -9,6 +9,22 @@ var vehicles = {};
 var libs = ['firebase-app.js','firebase-auth.js','firebase-database.js','firebase-firestore.js',
 'firebase-messaging.js', 'firebase-storage.js', 'firebaseui.js'];
 
+var actionCodeSettings = {
+  url: 'https://loadbuddy.web.app/?email=' + user.email,
+  /*
+  iOS: {
+    bundleId: 'com.example.ios'
+  },
+  android: {
+    packageName: 'com.example.android',
+    installApp: true,
+    minimumVersion: '12'
+  },
+  */
+  handleCodeInApp: false//,
+  //dynamicLinkDomain: "example.page.link"
+};
+
 window.prepare_firebase = function(){
   firebase.initializeApp({
     "apiKey": "AIzaSyAO6L_lAR4KPq9znC177zL_uweOXOdbIyU",
@@ -49,7 +65,7 @@ function prepare_uiConfig(){
             //handleSignedInUser(authResult.user);
           }else{
             if(authResult.additionalUserInfo.isNewUser){
-              /*user.sendEmailVerification().then(
+              /*user.sendEmailVerification(actionCodeSettings).then(
                 function() {
                     // Email sent.
                     document.getElementById('firebaseui-auth-container').innerHTML = "A verification link has been sent to your email";
