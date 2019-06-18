@@ -1,46 +1,67 @@
 <!DOCTYPE html>
-<html class="mdl-js"><head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="styles/inline.css">
-  <link type="text/css" rel="stylesheet" href="styles/firebaseui.css">
-  
-  <!-- Bootstrap -->
-  <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css">
- 
-<title>LOADBOARD</title>
-<script type="text/javascript" src="scripts/firebase-app.js"></script><script type="text/javascript" src="scripts/firebase-auth.js"></script><script type="text/javascript" src="scripts/firebase-database.js"></script><script type="text/javascript" src="scripts/firebase-firestore.js"></script><script type="text/javascript" src="scripts/firebase-messaging.js"></script><script type="text/javascript" src="scripts/firebase-storage.js"></script><script type="text/javascript" src="scripts/firebaseui.js"></script><script type="text/javascript" src="scripts/firebase-app.js"></script><script type="text/javascript" src="scripts/firebase-auth.js"></script><script type="text/javascript" src="scripts/firebase-database.js"></script><script type="text/javascript" src="scripts/firebase-firestore.js"></script><script type="text/javascript" src="scripts/firebase-messaging.js"></script><script type="text/javascript" src="scripts/firebase-storage.js"></script><script type="text/javascript" src="scripts/firebaseui.js"></script></head>
+<html class="mdl-js">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <!-- <link rel="stylesheet" type="text/css" href="styles/bootstrap.css"> -->
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap-grid.min.css"> 
+    <link rel="stylesheet" type="text/css" href="styles/inline.css">
+    <link type="text/css" rel="stylesheet" href="styles/firebaseui.css">
+    
+    <title>LOADBOARD</title>
+    <script type="text/javascript" src="scripts/firebase-app.js"></script>
+    <script type="text/javascript" src="scripts/firebase-auth.js"></script>
+    <script type="text/javascript" src="scripts/firebase-database.js"></script>
+    <script type="text/javascript" src="scripts/firebase-firestore.js"></script>
+    <script type="text/javascript" src="scripts/firebase-messaging.js"></script>
+    <script type="text/javascript" src="scripts/firebase-storage.js"></script>
+    <script type="text/javascript" src="scripts/firebaseui.js"></script>
+    
+  </head>
+
 <body>
-  <header id="top-content">
-    <div class="header-title">
-      <div class="container text-center">
-        <div class="header-links">
-          <a href="#" class="selected">Home</a>
-          <a href="#">Documentation</a>
-        </div>
-        <div id="home-title"><span class="strong">Load</span><span class="satisfy">board</span></div>
+
+  <header>
+    <div>
+        <table id = "htable">
+            <caption></caption>
+            <tr>
+                <th></th>
+                <th>
+                    <div class="header-links">
+                        <a href="#" class="selected">Home</a>
+                        <a href="#">Documentation</a>
+                    </div>
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div id="home-title">
+                      <span class="strong">Load</span>
+                      <span class="satisfy">board</span>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                  <div id="firebaseui-auth-container" class="clearfix">
+                </div>
+              </td>
+                <td></td>
+            </tr>
+        </table>
+
         
-      </div>
     </div>
 
-    <div class="header-content">
-      <div class="container text-center">
-        <div class="row">
-          <div class="span12">
-            
-
-          </div>
-        </div>
-        <div class="row">
-          <div class="span6 offset3">
-              <div id="firebaseui-auth-container" class="clearfix">
-
-              </div>
-          </div>
-        </div>
-    </div>
-  </div></header>
+</header>
 
 
   <div class="container" id="bottom-container">
@@ -106,5 +127,6 @@
   </footer>
   <script src="scripts/app.js"></script>
 
+</body>
 
-</body></html>
+</html>

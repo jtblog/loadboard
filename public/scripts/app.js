@@ -9,6 +9,7 @@ var vehicles = {};
 var libs = ['firebase-app.js','firebase-auth.js','firebase-database.js','firebase-firestore.js',
 'firebase-messaging.js', 'firebase-storage.js', 'firebaseui.js'];
 
+/*
 var actionCodeSettings = {
   url: 'https://loadbuddy.web.app/?email=' + user.email,
   /*
@@ -20,10 +21,11 @@ var actionCodeSettings = {
     installApp: true,
     minimumVersion: '12'
   },
-  */
+  
   handleCodeInApp: false//,
   //dynamicLinkDomain: "example.page.link"
 };
+*/
 
 window.prepare_firebase = function(){
   firebase.initializeApp({
