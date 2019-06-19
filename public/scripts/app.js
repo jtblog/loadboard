@@ -9,24 +9,6 @@ var vehicles = {};
 var libs = ['firebase-app.js','firebase-auth.js','firebase-database.js','firebase-firestore.js',
 'firebase-messaging.js', 'firebase-storage.js', 'firebaseui.js'];
 
-/*
-var actionCodeSettings = {
-  url: 'https://loadbuddy.web.app/?email=' + user.email,
-  /*
-  iOS: {
-    bundleId: 'com.example.ios'
-  },
-  android: {
-    packageName: 'com.example.android',
-    installApp: true,
-    minimumVersion: '12'
-  },
-  
-  handleCodeInApp: false//,
-  //dynamicLinkDomain: "example.page.link"
-};
-*/
-
 window.prepare_firebase = function(){
   firebase.initializeApp({
     "apiKey": "AIzaSyAO6L_lAR4KPq9znC177zL_uweOXOdbIyU",
@@ -64,17 +46,30 @@ function prepare_uiConfig(){
         if (authResult.user) {
           window.user = JSON.parse(JSON.stringify(authResult.user));
           if(user.emailVerified){
+            window.actionCodeSettings = {
+              url: 'https://loadbuddy.web.app/?email=' + window.user.email,
+              //iOS: {
+                //bundleId: 'com.example.ios'
+              //},
+              //android: {
+                //packageName: 'com.example.android',
+                //installApp: true,
+                //minimumVersion: '12'
+              //},
+              handleCodeInApp: false,
+              dynamicLinkDomain: "loadbuddy.web.app"
+            };
             //handleSignedInUser(authResult.user);
           }else{
             if(authResult.additionalUserInfo.isNewUser){
-              /*user.sendEmailVerification(actionCodeSettings).then(
+              auth.currentUser.sendEmailVerification(window.actionCodeSettings).then(
                 function() {
                     // Email sent.
                     document.getElementById('firebaseui-auth-container').innerHTML = "A verification link has been sent to your email";
                 }, function(error) {
                     // An error happened.
                 }
-              );*/
+              );
             }else{
               document.getElementById('firebaseui-auth-container').innerHTML = "A verification link has been sent to your email";
             }
@@ -128,6 +123,11 @@ window.addEventListener('load', initApp);
 
 document.addEventListener('DOMContentLoaded', function() {
   //initApp;
+  window.mode = getParameterByName('mode');
+  window.actionCode = getParameterByName('oobCode');
+  window.continueUrl = getParameterByName('continueUrl');
+  window.lang = getParameterByName('lang') || 'en';
+
   // // The Firebase SDK is initialized and available here!
   // firebase.auth().onAuthStateChanged(user => { });
   // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
