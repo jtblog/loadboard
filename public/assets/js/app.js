@@ -45,8 +45,7 @@ function prepare_uiConfig(){
       signInSuccessWithAuthResult: function(authResult, redirectUrl) {
         if (authResult.user) {
           window.user = JSON.parse(JSON.stringify(authResult.user));
-          if(user.emailVerified){
-            window.actionCodeSettings = {
+          window.actionCodeSettings = {
               url: 'https://loadbuddy.web.app/?email=' + window.user.email,
               //iOS: {
                 //bundleId: 'com.example.ios'
@@ -56,9 +55,11 @@ function prepare_uiConfig(){
                 //installApp: true,
                 //minimumVersion: '12'
               //},
-              handleCodeInApp: false,
-              dynamicLinkDomain: "loadbuddy.web.app"
+              handleCodeInApp: false//,
+              //dynamicLinkDomain: "loadbuddy.web.app"
             };
+          if(user.emailVerified){
+            
             //handleSignedInUser(authResult.user);
           }else{
             if(authResult.additionalUserInfo.isNewUser){
@@ -76,10 +77,10 @@ function prepare_uiConfig(){
             
           }
         }
-        if (authResult.additionalUserInfo) {
+        /*if (authResult.additionalUserInfo) {
           //True for new users otherwise false
           //authResult.additionalUserInfo.isNewUser
-        }
+        }*/
         return false;
       },
       uiShown: function() {

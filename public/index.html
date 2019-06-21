@@ -1,129 +1,108 @@
 <!DOCTYPE html>
-<html class="mdl-js">
+<html>
 
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap -->
-    <!-- <link rel="stylesheet" type="text/css" href="styles/bootstrap.css"> -->
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap-grid.min.css"> 
-    <link rel="stylesheet" type="text/css" href="styles/inline.css">
-    <link type="text/css" rel="stylesheet" href="styles/firebaseui.css">
-    
-    <title>LOADBOARD</title>
-    <script type="text/javascript" src="scripts/firebase-app.js"></script>
-    <script type="text/javascript" src="scripts/firebase-auth.js"></script>
-    <script type="text/javascript" src="scripts/firebase-database.js"></script>
-    <script type="text/javascript" src="scripts/firebase-firestore.js"></script>
-    <script type="text/javascript" src="scripts/firebase-messaging.js"></script>
-    <script type="text/javascript" src="scripts/firebase-storage.js"></script>
-    <script type="text/javascript" src="scripts/firebaseui.js"></script>
-    
-  </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Loardboard</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <link rel="stylesheet" href="assets/css/firebaseui.css">
+
+    <script src="assets/js/firebase-app.js"></script>
+    <script src="assets/js/firebase-auth.js"></script>
+    <script src="assets/js/firebase-database.js"></script>
+    <script src="assets/js/firebase-messaging.js"></script>
+    <script src="assets/js/firebase-firestore.js"></script>
+    <script src="assets/js/firebaseui.js"></script>
+</head>
 
 <body>
-
-  <header>
-    <div id="hdiv">
-        <table id = "htable">
-            <caption></caption>
-            <tr>
-                <th></th>
-                <th>
-                    <div class="header-links">
-                        <a href="#" class="selected">Home</a>
-                        <a href="#">Documentation</a>
-                    </div>
-                </th>
-                <th></th>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <div id="home-title">
-                      <span class="strong">Load</span>
-                      <span class="satisfy">board</span>
-                    </div>
-                </td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                  <div id="firebaseui-auth-container" class="clearfix">
+    <div>
+        <nav class="navbar navbar-dark navbar-expand-md text-white bg-dark navigation-clean-button">
+            <div class="container"><a class="navbar-brand" href="#">LOADBOARD</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse"
+                    id="navcol-1">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Features</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#">FAQ</a></li>
+                        <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Help</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#"><button class="btn btn-dark" type="button">Contact Us</button></a></div>
+                        </li>
+                    </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="#">Sign In / Sign Up</a></span></div>
+            </div>
+        </nav>
+    </div>
+    <div id="firebaseui-auth-container" class="login-clean"></div>
+    <div class="features-clean">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Features</h2>
+                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
+            </div>
+            <div class="row features">
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-map-marker icon"></i>
+                    <h3 class="name">Works everywhere</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
                 </div>
-              </td>
-                <td></td>
-            </tr>
-        </table>
-
-        
-    </div>
-  </header>
-
-  <!--
-    <div class="container" id="main">
-    
-    <div class="row">
-      <div class="span12">
-          <div class="bottom-content">
-            <div class="row">
-              <div class="span5 offset1">
-                <h3>What is Loadboard?</h3>
-                <p class="answer">
-                  Loadboard is an open-source, real-time logistic web app built on Firebase. It offers fully secure multi-user usage with flexible authentication, moderator features, user presence and search, private messaging and more.
-                </p>
-              </div>
-              <div class="span5">
-                <h3>Which technologies does Loadboard use?</h3>
-                <p class="answer">
-                  The core data layer under Loadboard uses <a href="https://firebase.google.com/" target="_blank">Firebase</a> for authentication, real-time data synchronization, and data persistence.
-                  <br><br>
-                  The default interface uses <a href="http://jquery.com/" target="_blank">jQuery</a>, <a href="http://underscorejs.org/" target="_blank">Underscore.js</a>, and <a href="http://twitter.github.io/bootstrap/" target="_blank">Bootstrap</a>. Icons by <a href="http://glyphicons.com/" target="_blank">Glyphicons</a>. Build and compilation managed with <a href="http://gruntjs.com/" target="_blank">Grunt</a> and code hosted by <a href="https://github.com/" target="_blank">GitHub</a>.
-                </p>
-              </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-clock-o icon"></i>
+                    <h3 class="name">Always available</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-list-alt icon"></i>
+                    <h3 class="name">Customizable</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-leaf icon"></i>
+                    <h3 class="name">Organic</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-plane icon"></i>
+                    <h3 class="name">Fast</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-phone icon"></i>
+                    <h3 class="name">Mobile-first</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
             </div>
-            <div class="row">
-              <div class="span5 offset1">
-                <h3>What can I do with Loadboard?</h3>
-                <p class="answer">
-                  With Loadboard, you get full-featured logistics in your application with a few simple script includes. Additionally, Loadboard is easy to modify and extend. Based upon it's simple underlying data model and <a href="" target="_blank">Firebase</a>-powered data synchronization, it's easy to add new features, modify the UI, and customize to fit your specific needs.
-                </p>
-                <p>
-                  If Loadboard doesn't currently meet your needs, feel free to fork the repo and tweak the code!
-                </p>
-              </div>
-              <div class="span5">
-                <h3>Who's behind Loadboard?</h3>
-                <p class="answer">
-                    Loadboard was built by the folks at <a href="https://firebase.google.com/?g=Loadboard" target="_blank">Firebase</a> in San Francisco, California.
-                  <br><br>
-                  Community submissions are encouraged! <a href="https://github.com/firebase/Loadboard" target="_blank">Star Loadboard on GitHub</a> and send a pull request when you're ready to contribute!
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="span5 offset1">
-                <h3>Who's using Loadboard?</h3>
-                <p class="answer">
-                  </p><blockquote>
-                  </blockquote>
-                <p></p>
-              </div>
-              
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  -->
-  
-  <footer class="footer">
-    
-  </footer>
-  <script src="scripts/app.js"></script>
-
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Web design</a></li>
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>Company Name</h3>
+                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Company Name © 2017</p>
+            </div>
+        </footer>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
