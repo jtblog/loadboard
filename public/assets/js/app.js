@@ -138,6 +138,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function authstateobserver(user){
+  if(user != null){
+    window.user = user;
+  }
   /*
   document.getElementById('loading').style.display = 'none';
   document.getElementById('loaded').style.display = 'block';

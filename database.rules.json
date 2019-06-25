@@ -1,6 +1,18 @@
 {
   "rules": {
-    ".read": false,
-    ".write": false
+  	"carriers": {
+      ".read": "true",
+      ".write": "true"
+    },
+  	"shippers": {
+      ".read": "true",
+      ".write": "true"
+    },
+    "users": {
+      "$uid": {
+      	".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
   }
 }
