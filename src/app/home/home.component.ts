@@ -10,45 +10,38 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
+  model = {
+    sports: false,
+    politics: false,
+    awards: false,
+    special_events: false
+  };
+
   public isSideBarCollapsed = true;
   public isMenuCollapsed = true;
-
-  constructor() { }
-
-  ngOnInit() {
-    this.tweek_styles()
-  }
-
-  ngAfterViewChecked() {
-    this.tweek_styles()
-  }
-
-  ngAfterContentChecked() {
-    this.tweek_styles()
-  }
-
-  ngDoCheck() {
-    this.tweek_styles()
-  }
-
-  tweek_styles(){
-    let blnk = document.getElementsByClassName('btn')
-    let cbdy = document.getElementsByClassName('card-body')
-    for(var i = 0; i < blnk.length; i++){
-      (blnk[i] as HTMLElement).style.width = "100%";
-    }
-    for(var i = 0; i < cbdy.length; i++){
-      (cbdy[i] as HTMLElement).style.overflow = "scroll";
-    }
-  }
-
-
-  images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  //images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  images = [];
 
   paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;
   pauseOnHover = true;
+
+  constructor() { }
+
+  ngOnInit() {
+    this.images.push('../assets/img/bonus.png')
+    this.images.push('../assets/img/customer_call.png')
+  }
+
+  ngAfterViewChecked() {
+  }
+
+  ngAfterContentChecked() {
+  }
+
+  ngDoCheck() {
+  }
 
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 

@@ -1,0 +1,123 @@
+<div class="modal-header">
+    <!-- <h6 class="modal-title">Add Bet</h6> -->
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <p style="font-size: 20px;text-align: center;margin-top: 30px;">Add New or Update (Bet)</p>
+    <form class="bform" #betForm = "ngForm" (submit) = tweekBet($event)>
+
+        <div class="form-group">
+            <img class="img-fluid d-block mx-auto image" src="assets/img/NaijaVegasLogo.jpg" >
+        </div>
+
+        <div class="form-group">
+            <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="option">
+                <label ngbButtonLabel class="btn-primary">
+                    <input ngbButton type="radio" [value]="3"> 3
+                </label>
+                <label ngbButtonLabel class="btn-primary">
+                    <input ngbButton type="radio" [value]="2"> 2
+                </label>
+                <label ngbButtonLabel class="btn-primary">
+                    <input ngbButton type="radio" [value]="1"> 1
+                </label>
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary" id="dropdown_category" ngbDropdownToggle>Category</button>
+                <div ngbDropdownMenu aria-labelledby="dropdown_category">
+                    <button ngbDropdownItem (click) = "this.schema.category = 'Sports'">Sports</button>
+                    <button ngbDropdownItem (click) = "this.schema.category = 'Politics'">Politics</button>
+                    <button ngbDropdownItem (click) = "this.schema.category = 'Awards'">Awards</button>
+                    <button ngbDropdownItem (click) = "this.schema.category = 'Special Events'">Special Events</button>
+                    <button ngbDropdownItem (click) = "listed = !listed; this.schema.category = ''">Not listed</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group" >
+            <label for="cat">Category</label>
+            <input type="text" class="rborder form-control" id="cat" required 
+            [(ngModel)]="schema.category" name="cat" #cat="ngModel" >
+        </div>
+        <div [hidden]="cat.valid || cat.pristine" class="alert alert-danger rborder">
+            No category
+        </div>
+
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <input type="text" class="rborder form-control" id="desc" required 
+            [(ngModel)]="schema.desc" name="desc" #desc="ngModel" >
+        </div>
+        <div [hidden]="desc.valid || desc.pristine" class="alert alert-danger rborder">
+            There must be some description
+        </div>
+        
+        <div class="form-group">
+            <label for="win">Odd for "WIN" option</label>
+            <input type="text" class="rborder form-control" id="win" required 
+            [(ngModel)]="schema.odds.win" name="win" #win="ngModel" >
+        </div>
+        <div [hidden]="win.valid || win.pristine" class="alert alert-danger rborder">
+            Odd for option "WIN" is required
+        </div>
+
+
+        <div *ngIf = "option == 2 || option == 3">
+            <div class="form-group">
+                <label for="lose">Odd for "LOSE" option</label>
+                <input type="text" class="rborder form-control" id="lose" required 
+                [(ngModel)]="schema.odds.lose" name="lose" #lose="ngModel" >
+            </div>
+            <div [hidden]="lose.valid || lose.pristine" class="alert alert-danger rborder">
+                Odd for option "LOSE" is required
+            </div>
+        </div>
+
+        <div *ngIf = "option == 3">
+            <div class="form-group">
+                <label for="draw">Odd for "DRAW" option</label>
+                <input type="text" class="rborder form-control" id="draw" required 
+                [(ngModel)]="schema.odds.draw" name="draw" #draw="ngModel" >
+            </div>
+            <div [hidden]="draw.valid || draw.pristine" class="alert alert-danger rborder">
+                Odd for option "DRAW" is required
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <label for="expiry">Expiry</label>
+            <!-- <input type="datetime-local" class="rborder form-control" id="expiry" name="input" [(ngModel)]="schema.expiry" required 
+            min = {{schema.expiry}} /> -->
+            <dl-date-time-picker
+                startView="day"
+                maxView="year"
+                minView="minute"
+                minuteStep="5"
+                [(ngModel)]="schema.expiry"
+                name = "date"
+            >
+            </dl-date-time-picker>
+		</div>
+        
+        <div *ngIf="error.code" class="alert alert-danger" >
+          {{ error.message }}
+        </div>
+
+        <button type="submit" class="rborder btn btn-success" style="width: 100%;" [disabled]="!betForm.form.valid">ADD/UPDATE</button>
+
+    </form>
+
+   <!-- <p>Hello, {{name}}!</p>
+    <p>{{site}}!</p> --> 
+</div>
+<div class="modal-footer">
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button> -->
+</div>

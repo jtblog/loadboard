@@ -1,0 +1,72 @@
+<!-- Form  -->
+    <section>
+    	<div class="hmg-center">
+
+			<img class="img-fluid d-block mx-auto image" >
+			<!-- src="https://github.com/jtblog/naijavegas/raw/master/src/static/assets/img/tech/image2.jpg" -->
+
+		    <p style="font-size: 20px;text-align: center;margin-top: 30px;">Register an account</p>
+		    <form class="rform" #registerForm = "ngForm" (submit) = registerUser($event)>
+				<div class="form-group">
+				<label for="fname">First Name</label>
+				<input type="text" class="rborder form-control" id="fname" required 
+				[(ngModel)]="schema.firstName" name="fname" #fname="ngModel" >
+				</div>
+				<div [hidden]="fname.valid || fname.pristine" class="alert alert-danger rborder">
+					First Name is required
+				</div>
+
+				<div class="form-group">
+				<label for="lname">Last Name</label>
+				<input type="text" class="rborder form-control" id="lname" required 
+				[(ngModel)]="schema.lastName" name="lname" #lname="ngModel" >
+				</div>
+				<div [hidden]="lname.valid || lname.pristine" class="alert alert-danger rborder">
+					Last Name is required
+				</div>
+
+				<div class="form-group">
+					<label for="pno">Phone Number</label>
+					<input type="phone" class="rborder form-control" id="pno" required 
+					[(ngModel)]="schema.phoneNumber" name="pno" #pno="ngModel" >
+				</div>
+				<div [hidden]="pno.valid || pno.pristine" class="alert alert-danger rborder">
+					Phone Number is required
+				</div>
+
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="text" class="rborder form-control" id="email" required 
+					[(ngModel)]="schema.email" name="email" #email="ngModel" >
+				</div>
+				<div [hidden]="email.valid || email.pristine" class="alert alert-danger rborder">
+					Email is required
+				</div>
+				  
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="rborder form-control" id="password" required
+					[(ngModel)]="schema.password" name="password" #password="ngModel">
+				</div>
+				<div [hidden]="password.valid || password.pristine" class="alert alert-danger rborder">
+						Password is required
+				</div>
+				
+				<div class="form-group">
+					<label for="cpassword">Confirm Password</label>
+					<input type="password" class="rborder form-control" id="cpassword" [(ngModel)]="schema.cpassword" name="cpassword" required>
+				</div>
+
+				<div *ngIf="error.code" class="alert alert-danger" >
+					{{ error.message }}
+				</div>
+
+				<button type="submit" class="rborder btn btn-success" style="width: 100%;" [disabled]="!registerForm.form.valid">Register</button>
+
+				<div class="">
+					<span>Already have an account? <a href="/signin">Login</a></span>
+				</div>
+
+		    </form>
+		</div>
+    </section>

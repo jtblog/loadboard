@@ -1,0 +1,45 @@
+<div class="hmg-center">
+
+  <img class="img-fluid d-block mx-auto image" > 
+    <!-- src="https://github.com/jtblog/naijavegas/raw/master/src/static/assets/img/tech/image2.jpg" -->
+
+    <p style="font-size: 20px;text-align: center;margin-top: 30px;">Login to your account</p>
+    <form class="lform" #loginForm = "ngForm" (submit) = loginUser($event)>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="rborder form-control" id="email" required 
+          [(ngModel)]="schema.email" name="email" #email="ngModel" >
+        </div>
+        <div [hidden]="email.valid || email.pristine" class="alert alert-danger rborder">
+          Email is required
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="rborder form-control" id="password" required
+          [(ngModel)]="schema.password" name="password" #password = "ngModel" >
+        </div>
+        <div [hidden]="password.valid || password.pristine" class="alert alert-danger rborder">
+          Password is required
+        </div>
+        
+        <div *ngIf="error.code" class="alert alert-danger" >
+          {{ error.message }}
+        </div>
+
+        <button type="submit" class="rborder btn btn-success" style="width: 100%;" [disabled]="!loginForm.form.valid">LOG IN</button>
+
+        <!-- <button type="button" class="btn btn-default" (click)="newHero(); loginForm.reset()">New Event</button> -->
+
+        <div class="" style="margin-top: 30px;">
+          <span class="">
+            <i class="fa fa-lock" style="margin-right: 30px;"></i> 
+            <a>Forgot password?</a>
+          </span> 
+        </div>
+        <div class="">
+          <span>Don't have an account? <a href="/signup">Register</a></span>
+        </div>
+
+    </form>
+</div>

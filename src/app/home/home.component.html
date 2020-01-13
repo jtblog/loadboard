@@ -1,267 +1,38 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+  <a class="navbar-brand" [routerLink]="'.'"></a>
 
-<!DOCTYPE html>
-<html lang="en">
+  <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    &#9776;
+  </button>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
-    <title>NAIJA VEGAS</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
- 
+  <!-- Step 2: Add the ngbCollapse directive to the element below. -->
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse btn-group btn-group-toggle">
+    <label class="btn-primary" ngbButtonLabel>
+      <input type="checkbox" ngbButton [(ngModel)]="model.sports"> Sports
+    </label>
+    <label class="btn-primary" ngbButtonLabel>
+      <input type="checkbox" ngbButton [(ngModel)]="model.politics"> Politics
+    </label>
+    <label class="btn-primary" ngbButtonLabel>
+      <input type="checkbox" ngbButton [(ngModel)]="model.awards"> Awards
+    </label>
+    <label class="btn-primary" ngbButtonLabel>
+      <input type="checkbox" ngbButton [(ngModel)]="model.special_events"> Special Events
+    </label>
+  </div>
+</nav>
 
-</head>
-
-<body>
-<div class="page-wrapper chiller-theme toggled" [ngClass] = "{ toggled : !isSideBarCollapsed }">
-  
-  <nav id="sidebar" class="sidebar-wrapper">
-    <div class="sidebar-content">
-      <div class="sidebar-brand">
-        <a >NAIJA VEGAS</a>
-        <div id="close-sidebar" (click) = "isSideBarCollapsed = !isSideBarCollapsed">
-          <i class="fas fa-times"></i>
-        </div>
-      </div>
-      <div class="sidebar-header">
-        <div class="user-pic">
-          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
-            alt="User picture">
-        </div>
-        <div class="user-info">
-          <span class="user-name">Tope
-            <strong>Obagbemisoye</strong>
-          </span>
-          <span class="user-role">Administrator</span>
-          <span class="user-status">
-            <i class="fa fa-circle"></i>
-            <span>Online</span>
-          </span>
-        </div>
-      </div>
-      <!-- sidebar-header  -->
-      <div class="sidebar-search">
-        <div>
-          <div class="input-group">
-            <input type="text" class="form-control search-menu" placeholder="Search...">
-            <div class="input-group-append">
-              <span class="input-group-text">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- sidebar-search  -->
-      <!--<div class="sidebar-menu">
-        <ul>
-          <li class="header-menu">
-            <span>General</span>
-          </li>
-          <li class="sidebar-dropdown">
-            <a >
-              <i class="fa fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-              <span class="badge badge-pill badge-warning">New</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a >Dashboard 1
-                    <span class="badge badge-pill badge-success">Pro</span>
-                  </a>
-                </li>
-                <li>
-                  <a >Dashboard 2</a>
-                </li>
-                <li>
-                  <a >Dashboard 3</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a >
-              <i class="fa fa-shopping-cart"></i>
-              <span>E-commerce</span>
-              <span class="badge badge-pill badge-danger">3</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a >Products
-
-                  </a>
-                </li>
-                <li>
-                  <a >Orders</a>
-                </li>
-                <li>
-                  <a >Credit cart</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a >
-              <i class="far fa-gem"></i>
-              <span>Components</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a >General</a>
-                </li>
-                <li>
-                  <a >Panels</a>
-                </li>
-                <li>
-                  <a >Tables</a>
-                </li>
-                <li>
-                  <a >Icons</a>
-                </li>
-                <li>
-                  <a >Forms</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a >
-              <i class="fa fa-chart-line"></i>
-              <span>Charts</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a >Pie chart</a>
-                </li>
-                <li>
-                  <a >Line chart</a>
-                </li>
-                <li>
-                  <a >Bar chart</a>
-                </li>
-                <li>
-                  <a >Histogram</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a >
-              <i class="fa fa-globe"></i>
-              <span>Maps</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a >Google maps</a>
-                </li>
-                <li>
-                  <a >Open street map</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="header-menu">
-            <span>Extra</span>
-          </li>
-          <li>
-            <a >
-              <i class="fa fa-book"></i>
-              <span>Documentation</span>
-              <span class="badge badge-pill badge-primary">Beta</span>
-            </a>
-          </li>
-          <li>
-            <a >
-              <i class="fa fa-calendar"></i>
-              <span>Calendar</span>
-            </a>
-          </li>
-          <li>
-            <a >
-              <i class="fa fa-folder"></i>
-              <span>Examples</span>
-            </a>
-          </li>
-        </ul>
-      </div>-->
-      <!-- sidebar-menu  -->
-    </div>
-    <!-- sidebar-content  -->
-    <div class="sidebar-footer">
-      <a >
-        <i class="fa fa-bell"></i>
-        <span class="badge badge-pill badge-warning notification">3</span>
-      </a>
-      <a >
-        <i class="fa fa-envelope"></i>
-        <span class="badge badge-pill badge-success notification">7</span>
-      </a>
-      <a >
-        <i class="fa fa-cog"></i>
-        <span class="badge-sonar"></span>
-      </a>
-      <a >
-        <i class="fa fa-power-off"></i>
-      </a>
-    </div>
-  </nav>
-  <!-- sidebar-wrapper  -->
-
-  <main class="page-content">
-
-    <!--Navigation bar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-      <div style="justify-content: start; margin-right: 50px" [ngbCollapse]= "!isSideBarCollapsed">
-        <a id="show-sidebar" (click)="isSideBarCollapsed = !isSideBarCollapsed">
-          <i class="fas fa-bars"></i>
-        </a>
-      </div>
-
-      <a class="navbar-brand" [routerLink]="'.'">NAIJA VEGAS</a>
-
-      <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
-      <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
-      </button>
-
-      <!-- Step 2: Add the ngbCollapse directive to the element below. -->
-      <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" style="justify-content: end;">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <!-- Step 4: Close the menu when a link is clicked. -->
-            <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = !isMenuCollapsed">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = !isMenuCollapsed">Examples</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = !isMenuCollapsed">About</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- Carousel -->
+<!-- Carousel -->
     <section>
-      <ngb-carousel #carousel interval="5000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)">
-        <ng-template ngbSlide *ngFor="let img of images; index as i">
+      <ngb-carousel #carousel interval="5000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)"style="width: 100%;">
+        <ng-template ngbSlide *ngFor="let img of images; index as i" style="width: 100%;">
           <div class="carousel-caption">
             <h3>My slide {{i + 1}} title</h3>
           </div>
           <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
-            <div class="picsum-img-wrapper">
-              <img [src]="img" alt="My image {{i + 1}} description">
+            <div class="picsum-img-wrapper" style="width: 100%;">
+              <img [src]="img" alt="My image {{i + 1}} description" style="width: 100%;">
             </div>
           </a>
         </ng-template>
@@ -308,29 +79,23 @@
                 <thead>
                   <tr>
                     <th scope="col">Stake <input inputmode="numeric" pattern="[0-9]*" digitonly="" style="width:100px"></th>
-                    <th scope="col">Return</th>
-                    <th scope="col">Net Profit</th>
+                    <th scope="col">Odds</th>
                     <th scope="col">Pay Out</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th scope="col">Yes</th>
-                    <th scope="col">95.3%</th>
-                    <th scope="col">9.53</th>
+                    <th scope="col"><button class="btn btn-sm btn-outline-primary">9.53</button></th>
                     <th scope="col">19.53</th>
                   </tr>
                   <tr>
                     <th scope="col">No</th>
-                    <th scope="col">76.3%</th>
-                    <th scope="col">7.63</th>
+                    <th scope="col"><button class="btn btn-sm btn-outline-primary">7.63</button></th>
                     <th scope="col">17.63</th>
                   </tr>
                 </tbody>
               </table>
-              <div _ngcontent-tbo-c1="" class="">
-                <button>Purchase</button>
-              </div>
           </ng-template>
         </ngb-panel>
 
@@ -350,78 +115,25 @@
                 <thead>
                   <tr>
                     <th scope="col">Stake <input inputmode="numeric" pattern="[0-9]*" digitonly="" style="width:100px"></th>
-                    <th scope="col">Return</th>
-                    <th scope="col">Net Profit</th>
+                    <th scope="col">Odds</th>
                     <th scope="col">Pay Out</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th scope="col">Yes</th>
-                    <th scope="col">95.3%</th>
-                    <th scope="col">9.53</th>
+                    <th scope="col"><button class="btn btn-sm btn-outline-primary">9.53</button></th>
                     <th scope="col">19.53</th>
                   </tr>
                   <tr>
                     <th scope="col">No</th>
-                    <th scope="col">76.3%</th>
-                    <th scope="col">7.63</th>
+                    <th scope="col"><button class="btn btn-sm btn-outline-primary">7.63</button></th>
                     <th scope="col">17.63</th>
                   </tr>
                 </tbody>
               </table>
-              <div _ngcontent-tbo-c1="" class="">
-                <button>Purchase</button>
-              </div>
           </ng-template>
         </ngb-panel>
         
       </ngb-accordion>
     </section>
-
-    <!-- Footer -->
-    <footer class="page-footer dark">
-      <div class="container">
-          <div class="row" style="margin-right: -5px;margin-left: -5px;width: 100%;">
-              <div class="cfs">
-                  <h5>Contact</h5>
-                  <a  style="display: inline-block;right: 0%;width: 80%;">
-                      <i class="fas fa-map-marker-alt" style="color: rgb(255,255,255);width: 20%;"></i>
-                      50 Honourable Idowu Eletu Street, Awoyaya, Ibeju-Lekki, Lagos<br>
-                  </a>
-                  <a  style="display: inline-block;right: 0%;">
-                      <i class="fas fa-mobile-alt" style="color: rgb(255,255,255);width: 20%;"></i>
-                      +234 (811) 200-1664<br>
-                  </a>
-                  <a  style="display: inline-block;right: 0%;">
-                      <i class="fas fa-envelope" style="color: rgb(255,255,255);width: 20%;"></i>
-                      support@naijavegas.com<br>
-                  </a>
-              </div>
-              <div class="cfs">
-                  <h5>Help Centre</h5>
-                  <a  style="display: inline-block;right: 0%;width: 80%;">About<br></a>
-                  <a  style="display: inline-block;right: 0%;">How to play<br></a>
-                  <a  style="display: inline-block;right: 0%;">Contact Us<br></a>
-                  <a  style="display: inline-block;right: 0%;">FAQS<br></a>
-          </div>
-          <div class="cfs">
-              <h5>Security</h5>
-              <a  style="display: inline-block;right: 0%;width: 80%;">T &amp; C<br></a>
-              <a  style="display: inline-block;right: 0%;">Payment<br></a>
-              <a >Privacy<br></a></div>
-      </div>
-      </div>
-      <div class="footer-copyright">
-          <p>© 2018 Copyright Text</p>
-      </div>
-    </footer>
-
-  </main>
-  <!-- page-content" -->
-</div>
-<!-- page-wrapper -->
-    
-</body>
-
-</html>

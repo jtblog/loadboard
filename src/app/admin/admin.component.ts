@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
@@ -8,12 +10,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class AdminComponent implements OnInit {
 
-  show_side_bar = false;
+  public isSideBarCollapsed = true;
+  public isMenuCollapsed = true;
 
   constructor() { }
 
   ngOnInit() {
-    this.show_side_bar = true;
   }
 
 }

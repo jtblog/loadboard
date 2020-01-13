@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <!-- <h6 class="modal-title">Add Bet</h6> -->
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body" id="paystackEmbedContainer">
+     <p style="font-size: 20px;text-align: center;margin-top: 30px;">Fund Account</p>
+    <form class="tuform" #tuform = "ngForm" (submit) = fundaccount($event)>
+
+        <div class="form-group">
+            <img class="img-fluid d-block mx-auto image" src="assets/img/NaijaVegasLogo.jpg" >
+        </div>
+
+        <div class="form-group">
+            <label for="amt">Amount (NGN)</label>
+            <input type="text" class="rborder form-control" id="amt" required 
+            [(ngModel)]="amnt" name="amt" #amt="ngModel" >
+        </div>
+        <div [hidden]="amt.valid || amt.pristine" class="alert alert-danger rborder">
+            Amount required
+        </div>
+        
+        <div *ngIf="error.code" class="alert alert-danger" >
+          {{ error.message }}
+        </div>
+
+        <button type="submit" class="rborder btn btn-success" style="width: 100%;" [disabled]="!tuform.form.valid">Proceed</button>
+    
+    </form>
+
+    <!-- <p>Hello, {{name}}!</p>
+    <p>{{site}}!</p> --> 
+</div>
+<div class="modal-footer">
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button> -->
+</div>
