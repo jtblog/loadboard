@@ -568,3 +568,11 @@ a {
     right: 0%;
     width: 100%;
 }
+
+.tile {
+  display: flex;
+  position: absolute;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  justify-content: center;
+}

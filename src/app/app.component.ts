@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './core/auth.service';
 import { SetbetComponent } from './setbet/setbet.component';
 import { TopupComponent } from './topup/topup.component';
+import { WalletComponent } from './wallet/wallet.component'
+import { BetslipComponent } from './betslip/betslip.component';
 
 @Component({
   selector: 'app-root',
@@ -132,6 +134,18 @@ export class AppComponent {
 
   topup() {
     const modalRef = this.modalService.open(TopupComponent);
+    //modalRef.componentInstance.name = 'World';
+    //modalRef.componentInstance.site = 'Naija Vegas';
+  }
+
+  openwallet(){
+    const modalRef = this.modalService.open(WalletComponent);
+    //modalRef.componentInstance.name = 'World';
+    //modalRef.componentInstance.site = 'Naija Vegas';
+  }
+
+  openbetslip() {
+    const modalRef = this.modalService.open(BetslipComponent);
     //modalRef.componentInstance.name = 'World';
     //modalRef.componentInstance.site = 'Naija Vegas';
   }

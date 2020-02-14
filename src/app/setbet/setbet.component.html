@@ -25,28 +25,140 @@
                 </label>
             </div>
         </div>
-        
+
+        <!-- <div *ngFor="let item of {'b': 1, 'a': 1} | keyvalue">
+            {{ item.key }} - {{ item.value }}
+        </div> -->
+
+        <!-- <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="!this.isNullOrUndefinedOrEmpty(categories)">
+                    <td>
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-outline-primary" id="dropdown_cat1" ngbDropdownToggle>Category 1</button>
+                            <div ngbDropdownMenu>
+                                <div *ngFor="let item of categories | keyvalue">
+                                    <button ngbDropdownItem (click) = "cat.category1 = item.key">{{ item.key }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group" >
+                            <label for="cat1">Not listed</label>
+                            <input type="text" class="rborder form-control" id="cat1" required 
+                            [(ngModel)]="cat.category1" name="cat1" #cat1="ngModel" >
+                        </div>
+                        <div [hidden]="cat1.valid || cat1.pristine" class="alert alert-danger rborder">
+                            No category
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="!this.isNullOrUndefinedOrEmpty(getChild(categories, [cat.category1]))">
+                    <td>
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-outline-primary" id="dropdown_cat2" ngbDropdownToggle>Category 2</button>
+                            <div ngbDropdownMenu>
+                                <div *ngFor="let item of getChild(categories, [cat.category1]) | keyvalue">
+                                    <button ngbDropdownItem (click) = "cat.category2 = item.key">{{ item.key }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group" >
+                            <label for="cat2">Not listed</label>
+                            <input type="text" class="rborder form-control" id="cat2" required 
+                            [(ngModel)]="cat.category2" name="cat2" #cat2="ngModel" >
+                        </div>
+                        <div [hidden]="cat2.valid || cat2.pristine" class="alert alert-danger rborder">
+                            No category
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="!this.isNullOrUndefinedOrEmpty(getChild(categories, [cat.category1, cat.category2]))">
+                    <td>
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-outline-primary" id="dropdown_cat3" ngbDropdownToggle>Category 3</button>
+                            <div ngbDropdownMenu>
+                                <div *ngFor="let item of getChild(categories, [cat.category1, cat.category2]) | keyvalue">
+                                    <button ngbDropdownItem (click) = "cat.category3 = item.key">{{ item.key }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group" >
+                            <label for="cat3">Not listed</label>
+                            <input type="text" class="rborder form-control" id="cat3" required 
+                            [(ngModel)]="cat.category3" name="cat3" #cat3="ngModel" >
+                        </div>
+                        <div [hidden]="cat3.valid || cat3.pristine" class="alert alert-danger rborder">
+                            No category
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="!this.isNullOrUndefinedOrEmpty(getChild(categories, [cat.category1, cat.category2, cat.category3]))">
+                    <td>
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-outline-primary" id="dropdown_cat4" ngbDropdownToggle>Category 4</button>
+                            <div ngbDropdownMenu>
+                                <div *ngFor="let item of getChild(categories, [cat.category1, cat.category2, cat.category3]) | keyvalue">
+                                    <button ngbDropdownItem (click) = "cat.category4 = item.key">{{ item.key }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group" >
+                            <label for="cat4">Not listed</label>
+                            <input type="text" class="rborder form-control" id="cat4" required 
+                            [(ngModel)]="cat.category4" name="cat4" #cat4="ngModel" >
+                        </div>
+                        <div [hidden]="cat4.valid || cat4.pristine" class="alert alert-danger rborder">
+                            No category
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="!this.isNullOrUndefinedOrEmpty(getChild(categories, [cat.category1, cat.category2, cat.category3, cat.category4]))">
+                    <td>
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-outline-primary" id="dropdown_cat5" ngbDropdownToggle>Category 5</button>
+                            <div ngbDropdownMenu>
+                                <div *ngFor="let item of getChild(categories, [cat.category1, cat.category2, cat.category3, cat.category4])| keyvalue">
+                                    <button ngbDropdownItem (click) = "cat.category5 = item.key">{{ item.key }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group" >
+                            <label for="cat5">Not listed</label>
+                            <input type="text" class="rborder form-control" id="cat5" required 
+                            [(ngModel)]="cat.category5" name="cat5" #cat5="ngModel" >
+                        </div>
+                        <div [hidden]="cat5.valid || cat5.pristine" class="alert alert-danger rborder">
+                            No category
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+        -->
 
         <div class="form-group">
-            <div ngbDropdown class="d-inline-block">
-                <button class="btn btn-outline-primary" id="dropdown_category" ngbDropdownToggle>Category</button>
-                <div ngbDropdownMenu aria-labelledby="dropdown_category">
-                    <button ngbDropdownItem (click) = "this.schema.category = 'Sports'">Sports</button>
-                    <button ngbDropdownItem (click) = "this.schema.category = 'Politics'">Politics</button>
-                    <button ngbDropdownItem (click) = "this.schema.category = 'Awards'">Awards</button>
-                    <button ngbDropdownItem (click) = "this.schema.category = 'Special Events'">Special Events</button>
-                    <button ngbDropdownItem (click) = "listed = !listed; this.schema.category = ''">Not listed</button>
-                </div>
-            </div>
+            <label for="path">Path</label>
+            <input type="text" class="rborder form-control" id="path" required 
+            [(ngModel)]="schema.category_path" name="path" #path="ngModel" >
         </div>
-        
-        <div class="form-group" >
-            <label for="cat">Category</label>
-            <input type="text" class="rborder form-control" id="cat" required 
-            [(ngModel)]="schema.category" name="cat" #cat="ngModel" >
-        </div>
-        <div [hidden]="cat.valid || cat.pristine" class="alert alert-danger rborder">
-            No category
+        <div [hidden]="path.valid || path.pristine" class="alert alert-danger rborder">
+            Bet must have categories and sub categories
         </div>
 
         <div class="form-group">

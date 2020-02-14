@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule, NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { LocationStrategy, HashLocationStrategy } from "@angular/common";
 
 import { environment } from '../environments/environment'
 import { AngularFireModule } from '@angular/fire'
@@ -24,6 +25,11 @@ import { SetbetComponent } from './setbet/setbet.component';
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import { TopupComponent } from './topup/topup.component';
 
+import {MatGridListModule} from '@angular/material/grid-list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WalletComponent } from './wallet/wallet.component';
+import { BetslipComponent } from './betslip/betslip.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,15 +38,19 @@ import { TopupComponent } from './topup/topup.component';
     LoginComponent,
     RegisterComponent,
     SetbetComponent,
-    TopupComponent
+    TopupComponent,
+    WalletComponent,
+    BetslipComponent
   ],
   imports: [
+    MatGridListModule,
     BrowserModule, FormsModule,
     DlDateTimeDateModule,
     DlDateTimePickerModule,
     NgbModule, NgbPaginationModule, NgbAlertModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     RouterModule.forRoot([
@@ -65,10 +75,13 @@ import { TopupComponent } from './topup/topup.component';
         path : "",
         component : HomeComponent 
       }
-    ])
+    ], {useHash: true}),
+    BrowserAnimationsModule
   ],
-  entryComponents: [SetbetComponent, TopupComponent],
-  providers: [AuthService, AdminGuard, { provide: 'Window',  useValue: window }],
+  entryComponents: [SetbetComponent, TopupComponent, BetslipComponent, WalletComponent],
+  providers: [AuthService, AdminGuard, 
+    { provide: 'Window',  useValue: window }, 
+    { provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

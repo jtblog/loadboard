@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <!-- <h6 class="modal-title">Add Bet</h6> -->
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div>
+        <img class="img-fluid d-block mx-auto image" src="assets/img/NaijaVegasLogo.jpg" >
+    </div>
+
+    <p>
+      <ngb-alert type="custom" [dismissible]="false"><strong>Balance : </strong> {{this.Auth.currentUser['balance']}} </ngb-alert>
+    </p>
+
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+      <div *ngFor="let act of this.Auth.currentUser['activities'] | keyvalue">
+        <ngb-panel id="{{act.key}}">
+          <ng-template ngbPanelHeader ><!-- let-opened="opened">-->
+            <div class="d-flex align-items-center justify-content-between" style="overflow-x: scroll; padding: 0px;">
+              <button ngbPanelToggle class="btn btn-link p-0">{{act.value}}</button>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            {{toDate(act.key)}}
+          </ng-template>
+        </ngb-panel>
+      </div>
+    </ngb-accordion>
+      
+</div>
+<div class="modal-footer">
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button> -->
+</div>
+
+<!--
+  <div class="container">
+  <div class="row">
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div>
+-->

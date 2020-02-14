@@ -40,7 +40,7 @@
           <span class="user-name">{{ firstName }}
             <strong>{{ lastName }}</strong>
           </span>
-          <span class="user-role"  *ngIf="!lastName == 'Guest'">{{ role }}</span>
+          <span class="user-role"  *ngIf="!(lastName == 'Guest')">{{ role }}</span>
           <span class="user-status">
             <!-- <i class="fa fa-circle"></i> -->
             <span *ngIf="role == 'Client' || role == 'Admin'"><a (click) = signout() >Logout</a></span>
@@ -76,13 +76,13 @@
             </a>
           </li>
           <li class="sidebar-dropdown">
-            <a >
+            <a (click)="openwallet()">
               <i class="fab fa-google-wallet"></i>
               <span>Wallet</span>
             </a>
           </li>
           <li class="sidebar-dropdown">
-            <a >
+            <a (click)="openbetslip()">
               <i class="fa fa-shopping-cart"></i>
               <span>Bet Slip</span>
               <!-- <span class="badge badge-pill badge-danger">3</span> -->

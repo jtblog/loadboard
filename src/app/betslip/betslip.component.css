@@ -1,0 +1,7 @@
+.mat-grid-tile {
+	display: inline-block;
+    position: absolute;
+    overflow: visible;
+    margin: 10px;
+    word-wrap: break-word;
+}

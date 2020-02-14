@@ -3,21 +3,52 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { switchMap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable, of, merge } from 'rxjs';
 import { User } from './user';
+import { Betschema } from './betschema';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
+  adduserbetslip(confirm_bets: {}) {
+    this.currentUser.balance = Number.parseFloat(this.currentUser.balance) - Number.parseFloat(confirm_bets["total_stake"]);
+    this.currentUser.betslips[this.generateReference()] = confirm_bets;
+    return this.updateUserData(this.afAuth.auth.currentUser, null);
+  }
+
+  addusertransaction(trans: {}) {
+    this.currentUser.balance = Number.parseFloat(this.currentUser.balance) + Number.parseFloat(trans["amount"]);
+    this.currentUser.transactions[this.generateReference()] = JSON.parse(JSON.stringify(trans));
+    return this.updateUserData(this.afAuth.auth.currentUser, null);
+  }
+
+  _bets: firebase.firestore.CollectionReference<firebase.firestore.DocumentData>;
+  _cats: firebase.firestore.CollectionReference<firebase.firestore.DocumentData>;
+
+  setBet(schema: any) {
+    let id = this.afs.createId();
+    const betref: AngularFirestoreDocument<any> = this.afs.doc<Betschema>(`bets/${id}`)
+    schema["id"] = id
+    let obj = betref.set(schema, { merge: false})
+    /*const obj = this._bets.add({
+      schema
+    })*/
+    return obj;
+  }
 
   user$: Observable<User>
   currentUser: any = {}
+  categories: any = {}
+  bets: any = {}
+  betslip: any = {}
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
+              private db: AngularFireDatabase,
               private router: Router) {
 
                 this.afAuth.authState.subscribe(user => {
@@ -33,7 +64,7 @@ export class AuthService {
                     //localStorage.setItem('user', null);
                     /*JSON.parse(localStorage.getItem('user'));*/
                   }
-                })
+                });
 
                 this.user$ = this.afAuth.authState.pipe(
                   switchMap(user => {
@@ -53,6 +84,9 @@ export class AuthService {
             
                   })
                 );
+                
+                this.getCategories();
+                this.getBets();
               }
   
   getUser(user){
@@ -98,11 +132,10 @@ export class AuthService {
       }
     )
     const userRef: AngularFirestoreDocument<any> = this.afs.doc<User>(`users/${user.uid}`)
-    const data: User = {
+    let data: User = {
       uid: user.uid,
       email: user.email,
       roles: {
-        guest: true,
         client: true
       },
       activities: this.isNullOrUndefinedOrEmpty(this.currentUser["activities"]) ? {} : this.currentUser["activities"],
@@ -112,7 +145,7 @@ export class AuthService {
       phoneNumber: user.phoneNumber,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
-      transactions: {}
+      transactions: this.isNullOrUndefinedOrEmpty(this.currentUser["transactions"]) ? {} : this.currentUser["transactions"],
     }
     if(!this.isNullOrUndefinedOrEmpty(schema)){
       data.displayName = schema.firstName + " " + schema.lastName
@@ -128,11 +161,9 @@ export class AuthService {
   }
 
   thenary_operator_map(){
-
   }
 
   quad_operator(){
-
   }
 
   signOut(){
@@ -210,9 +241,46 @@ export class AuthService {
       }
   }
 
-  /*getUser(){
-    //return this.currentUser == undefined || this.currentUser == null ? JSON.parse(localStorage.getItem('user')): this.currentUser
-    return this.currentUser
-  }*/
+  addtobetslip(_in : object){
+    this.betslip[this.generateReference()] = _in
+  }
 
+  generateReference(): string {
+      let text = '';
+      const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      for (let i = 0; i < 20; i++) {
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+  }
+
+  getCategories(){
+
+     /*let _c = this.db.object("categories").valueChanges().subscribe((data) => {
+      this.categories = Object.assign({}, data)
+     });*/
+
+    this._cats = this.afs.firestore.collection(`categories`);
+    this._cats.get().then((querySnapshot) => { 
+      querySnapshot.forEach((doc) => {
+        this.categories[doc.id] = doc.data()
+      })
+    })
+
+    /*var query = this.afs.collection("categories").valueChanges()
+    query.subscribe(
+      categories => {
+        this.categories = categories
+      }
+    )*/
+  }
+
+  getBets(){
+    this._bets = this.afs.firestore.collection(`bets`);
+    this._bets.get().then((querySnapshot) => { 
+      querySnapshot.forEach((doc) => {
+        this.bets[doc.id] = doc.data()
+      })
+    })
+  }
 }

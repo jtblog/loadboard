@@ -7,18 +7,9 @@
   </button>
 
   <!-- Step 2: Add the ngbCollapse directive to the element below. -->
-  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse btn-group btn-group-toggle">
+  <div [ngbCollapse]="isMenuCollapsed" *ngFor="let key of basepaths; index as i" class="collapse navbar-collapse btn-group btn-group-toggle">
     <label class="btn-primary" ngbButtonLabel>
-      <input type="checkbox" ngbButton [(ngModel)]="model.sports"> Sports
-    </label>
-    <label class="btn-primary" ngbButtonLabel>
-      <input type="checkbox" ngbButton [(ngModel)]="model.politics"> Politics
-    </label>
-    <label class="btn-primary" ngbButtonLabel>
-      <input type="checkbox" ngbButton [(ngModel)]="model.awards"> Awards
-    </label>
-    <label class="btn-primary" ngbButtonLabel>
-      <input type="checkbox" ngbButton [(ngModel)]="model.special_events"> Special Events
+      <input type="checkbox" ngbButton [(ngModel)]="model[key]"> {{ key }}
     </label>
   </div>
 </nav>
@@ -58,11 +49,30 @@
       </button>
       -->
     </section>
-    
+
     <!-- Trending Events-->
     <section>
-      <ngb-accordion #acc="ngbAccordion">
+      <ngb-tabset *ngFor="let key of rootpaths; index as i">
+        <ngb-tab title="{{ trimbase(key) }}">
+          <ng-template ngbTabContent>
+            <mat-grid-list cols="2" rowHeight="4:1">
+              <mat-grid-tile *ngFor="let item of sorter[key]">
+                <!--<div class="tile">
+                </div>-->
+                <a href="" title="bets[item].desc" class="" style="margin: 10px;">
+                  {{ bets[item].desc }}
+                </a>
+                <div *ngFor="let odd of bets[item].odds | keyvalue">
+                  <button (click)="addtobetslip($event)" id="{{ bets[item].id + '_' + odd.key }}"
+                    class="btn btn-sm btn-outline-primary" style="margin: 10px;">{{odd.value}}</button>
+                </div>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
 
+     <!-- <ngb-accordion #acc="ngbAccordion">
         <ngb-panel id="toggle-1">
           <ng-template ngbPanelTitle>
             <div class="event">
@@ -86,7 +96,7 @@
                 <tbody>
                   <tr>
                     <th scope="col">Yes</th>
-                    <th scope="col"><button class="btn btn-sm btn-outline-primary">9.53</button></th>
+                    <th scope="col"></th>
                     <th scope="col">19.53</th>
                   </tr>
                   <tr>
@@ -136,4 +146,5 @@
         </ngb-panel>
         
       </ngb-accordion>
+    -->
     </section>

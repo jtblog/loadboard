@@ -14,15 +14,6 @@
 	}
 }
 
-
-html *
-{
-   font-size: 25px !important;
-   line-height: 27px;
-   /*color: #000 !important;
-   font-family: Arial !important;*/
-}
-
 .lform {
 	margin: 10px;
 }
@@ -251,4 +242,12 @@ a.link-button {
   padding-left: 15px;
   box-sizing: border-box;
   color: rgb(33, 37, 41);
+}
+
+html *
+{
+   /*font-size: 25px !important;
+   line-height: 27px;*/
+   /*color: #000 !important;
+   font-family: Arial !important;*/
 }

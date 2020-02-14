@@ -1,0 +1,92 @@
+<div class="modal-header">
+    <!-- <h6 class="modal-title">Add Bet</h6> -->
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+     <form class="slpform" #slpForm = "ngForm" (submit) = purchase_bets($event)>
+
+        <div class="form-group">
+            <img class="img-fluid d-block mx-auto image" src="assets/img/NaijaVegasLogo.jpg" >
+        </div>
+
+        <div class="form-group" *ngFor="let slip of this.Auth.betslip | keyvalue">
+            <mat-grid-list cols="6">
+                <mat-grid-tile>
+                    <label>
+                        {{ slip.value.desc }}
+                    </label>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <label>
+                        {{slip.value.choice + "s" }}
+                    </label>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <label>
+                        {{ trimbase(slip.value.category_path) }}
+                    </label>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <!-- <label style = "word-wrap: break-word; font-size: small; display:inline-block;" >
+                        Odd
+                    </label> -->
+                    <label>
+                        {{ slip.value.odds[slip.value.choice] }}
+                    </label>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <!-- <label style = "word-wrap: break-word; font-size: small; display:inline-block;" >
+                        Stake
+                    </label> -->
+
+                    <input type="text" class="rborder form-control" id="stake_{{slip.key}}" required
+                        [(ngModel)]="stakes[slip.key]" name="stake_{{slip.key}}" #stake_+slip.key = "ngModel">
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <!-- <label style = "word-wrap: break-word; font-size: small; display:inline-block;" >
+                        Payout
+                    </label> -->
+
+                    <input type="text" class="rborder form-control" id="payout_{{slip.key}}" required
+                        [(ngModel)]="payouts[slip.key]" name="payout_{{slip.key}}" #payout_+slip.key = "ngModel">
+                </mat-grid-tile>
+
+              </mat-grid-list>
+        </div>
+
+        
+        <div *ngIf="!isNullOrUndefinedOrEmpty(this.Auth.betslip)">
+            <div class="form-group">
+                <hr style="height: 5px;">
+                <label for="total">Total Stake</label>
+                <input type="text" class="rborder form-control" id="total" required 
+                [(ngModel)]="this.total_stake" name="total" #total="ngModel" >
+            </div>
+            <div [hidden]="total.valid || total.pristine" class="alert alert-danger rborder">
+                No stakes !
+            </div>
+            <div [hidden]="!totalequalssum" class="alert alert-danger rborder">
+                Total stakes cannot be lesser than sum of stakes !
+            </div>
+    
+            <div *ngIf="error.code" class="alert alert-danger" >
+              {{ error.message }}
+            </div>
+    
+            <button type="submit" class="rborder btn btn-success" style="width: 100%;" 
+                [disabled]="!slpForm.form.valid">PLACE BET(S)</button>
+        </div>
+
+    </form> 
+</div>
+<div class="modal-footer">
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button> -->
+</div>
